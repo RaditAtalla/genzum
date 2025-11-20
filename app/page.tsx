@@ -53,8 +53,10 @@ export default function HomePage() {
   }
 
   return(
+    <>
+    <div onClick={() => setCartVisible(false)} className={cartVisible ? "bg-blackOpacity block absolute inset-0 z-10" : "hidden"} />
     <div className="flex flex-col h-full relative">
-      <div onClick={() => setCartVisible(false)}>
+      <div>
         {/* appbar */}
         <div className="bg-white flex flex-col gap-16 px-4 py-8 mb-1">
           <div className="flex items-center gap-1">
@@ -86,7 +88,8 @@ export default function HomePage() {
         <TotalPriceCard item={totalItem} totalPrice={totalPrice} style="shadow-lg" onClick={() => setCartVisible(true)} />
       </div>
 
-      <Cart counts={counts} onDecrement={() => {}} onIncrement={() => {}} style={cartVisible ? "" : "hidden"} />
+      <Cart data={MENU} counts={counts} onDecrement={() => {}} onIncrement={() => {}} style={cartVisible ? "" : "hidden"} />
     </div>
+    </>
   )
 }
